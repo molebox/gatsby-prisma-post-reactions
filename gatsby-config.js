@@ -14,6 +14,7 @@ module.exports = {
                 name: 'posts',
                 path: `${__dirname}/posts/`
             }
-        }
+        },
+        'gatsby-plugin-theme-ui'
     ]
 }
