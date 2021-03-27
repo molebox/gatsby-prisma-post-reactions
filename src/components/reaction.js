@@ -1,9 +1,20 @@
 import React from "react";
 import Emoji from "./emoji";
 
-const Reaction = () => {
+const Reaction = (id) => {
+    console.log({id})
+
   const handleReaction = (reaction) => {
     console.log({ reaction });
+    fetch("/.netlify/functions/save-post-reaction", {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+        reaction
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
   };
 
   return (
