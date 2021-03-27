@@ -1,21 +1,30 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
 
-export default Index = ({ data }) => {
+const Home = ({ data }) => {
+  //console.log({ data })
 
-    return (
-        <div>
-            <h1>Hello</h1>
-        </div>
-    )
-}
+  React.useEffect(() => {
+    fetch("/.netlify/functions/save-post-reaction", {
+      method: "POST",
+      body: JSON.stringify({ appSays: "boop" }),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+  }, []);
+
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
+};
+
+export default Home;
 
 export const query = graphql`
   query BlogIndexQuery {
-    allMdx(
-      sort: { fields: [frontmatter___category], order: ASC }
-      filter: { frontmatter: { published: { eq: true } } }
-    ) {
+    allMdx {
       nodes {
         id
         frontmatter {

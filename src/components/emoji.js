@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
-export default Emoji = ({ ariaLabel, symbol }) => (
-    <span role="img" aria-label={ariaLabel}>
-        {symbol}
-    </span>
+const Emoji = ({ ariaLabel, symbol }) => (
+  <span role="img" aria-label={ariaLabel}>
+    {symbol}
+  </span>
 );
+
+export default Emoji;
