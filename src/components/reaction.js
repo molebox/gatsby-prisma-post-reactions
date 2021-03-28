@@ -1,8 +1,11 @@
 import React from "react";
-import Emoji from "./emoji";
+import { Box } from "theme-ui";
+import Angry from "./reactions/angry";
+import Happy from "./reactions/happy";
+import Yawn from "./reactions/yawn";
 
 const Reaction = (id) => {
-    console.log({id})
+  console.log({ id });
 
   const handleReaction = (reaction) => {
     console.log({ reaction });
@@ -10,7 +13,7 @@ const Reaction = (id) => {
       method: "POST",
       body: JSON.stringify({
         id,
-        reaction
+        reaction,
       }),
     })
       .then((res) => res.json())
@@ -18,17 +21,23 @@ const Reaction = (id) => {
   };
 
   return (
-    <ul>
+    <Box
+      as="ul"
+      sx={{
+        display: "flex",
+        listStyle: "none",
+      }}
+    >
       <li onClick={() => handleReaction("happy")}>
-        <Emoji ariaLabel="Face with hearts for eyes" symbol="😍" />
+        <Happy />
       </li>
       <li onClick={() => handleReaction("unimpressed")}>
-        <Emoji ariaLabel="Unimpressed face with straight mouth" symbol="😐" />
+        <Yawn />
       </li>
       <li onClick={() => handleReaction("sad")}>
-        <Emoji ariaLabel="Sad face" symbol="😩" />
+        <Angry />
       </li>
-    </ul>
+    </Box>
   );
 };
 
