@@ -1,8 +1,10 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/layout";
 
 const Home = ({ data }) => {
-  //console.log({ data })
+  const {nodes} = data.allMdx;
+  console.log({ data })
 
   React.useEffect(() => {
     fetch("/.netlify/functions/save-post-reaction", {
@@ -14,9 +16,16 @@ const Home = ({ data }) => {
   }, []);
 
   return (
-    <div>
+    <Layout>
       <h1>Hello</h1>
-    </div>
+      {nodes.map(({fields: {slug}, frontmatter: {title}}) => (
+        <Link
+        to={slug}
+        >
+          {title}
+        </Link>
+      ))}
+    </Layout>
   );
 };
 

@@ -86,4 +86,9 @@ export default {
       borderBottomStyle: "solid",
     },
   },
+  layout: {
+    maxWidth: 1440,
+    margin: '0 auto',
+    textAlign: 'center'
+  }
 };
